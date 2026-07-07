@@ -51,7 +51,7 @@ def generate_customers():
         index=False
     )
 
-    print("✅ customers.csv generated")
+    print(" customers.csv generated")
 
     return customers_df
 
@@ -132,7 +132,7 @@ def generate_products():
         index=False
     )
 
-    print("✅ products.csv generated")
+    print(" products.csv generated")
 
     return products_df
 
@@ -187,7 +187,7 @@ def generate_orders():
         index=False
     )
 
-    print("✅ orders.csv generated")
+    print(" orders.csv generated")
 
     return orders_df
 
@@ -259,7 +259,7 @@ def generate_order_items(products_df):
         index=False
     )
 
-    print("✅ order_items.csv generated")
+    print("order_items.csv generated")
 
     return order_items_df
 
@@ -286,7 +286,7 @@ def main():
     print(f"Orders      : {len(orders_df):,}")
     print(f"Order Items : {len(order_items_df):,}")
 
-    print("\n🎉 All datasets generated successfully!")
+    print("\n All datasets generated successfully!")
     print(f"\nLocation: {OUTPUT_DIR}")
 
 
