@@ -1,0 +1,201 @@
+product_id,product_name,category,brand,price,stock
+1,Samsung Laptop,Books,Samsung,419.79,119
+2,Sony Backpack,Electronics,Sony,1018.28,461
+3,Logitech Keyboard,Beauty,Logitech,638.66,20
+4,Samsung Monitor,Home,Samsung,762.98,18
+5,Logitech Monitor,Books,Logitech,978.33,284
+6,Nike Monitor,Sports,Nike,888.01,419
+7,Apple Camera,Toys,Apple,247.89,221
+8,Lenovo Headphones,Home,Lenovo,330.82,395
+9,Lenovo Keyboard,Electronics,Lenovo,576.09,188
+10,Lenovo Phone,Fashion,Lenovo,1212.62,378
+11,Adidas Desk,Electronics,Adidas,1459.94,198
+12,Samsung Desk,Fashion,Samsung,1245.81,321
+13,Lenovo Phone,Home,Lenovo,1059.81,28
+14,Dell Camera,Fashion,Dell,1477.98,442
+15,Dell Book,Electronics,Dell,576.39,237
+16,Lenovo Mouse,Fashion,Lenovo,539.35,348
+17,HP Backpack,Books,HP,975.57,316
+18,Sony Desk,Books,Sony,374.77,241
+19,Nike Headphones,Books,Nike,1035.36,117
+20,Lenovo Book,Toys,Lenovo,1166.24,122
+21,Apple Camera,Fashion,Apple,607.74,38
+22,Dell Speaker,Beauty,Dell,1315.79,166
+23,Dell Tablet,Sports,Dell,599.49,473
+24,Adidas Mouse,Fashion,Adidas,218.05,386
+25,Logitech Desk,Fashion,Logitech,1123.05,224
+26,Philips Coffee Maker,Fashion,Philips,336.79,75
+27,Logitech Smart Watch,Electronics,Logitech,1136.12,445
+28,Samsung Mouse,Books,Samsung,248.37,353
+29,Nike Phone,Electronics,Nike,583.3,310
+30,Adidas Desk,Fashion,Adidas,1456.91,445
+31,Apple Tablet,Books,Apple,180.68,458
+32,Logitech Camera,Fashion,Logitech,1155.21,179
+33,Samsung Headphones,Sports,Samsung,245.66,6
+34,HP Desk,Toys,HP,276.19,472
+35,Samsung Book,Books,Samsung,454.68,332
+36,Logitech Phone,Home,Logitech,237.73,395
+37,Sony Desk,Toys,Sony,1384.43,475
+38,Apple Phone,Fashion,Apple,738.02,62
+39,Lenovo Speaker,Toys,Lenovo,1212.09,127
+40,Apple Monitor,Beauty,Apple,1420.95,48
+41,Adidas Book,Electronics,Adidas,1467.2,277
+42,Sony Mouse,Books,Sony,718.17,286
+43,Sony Headphones,Beauty,Sony,1309.93,221
+44,Dell Speaker,Beauty,Dell,1135.35,358
+45,Dell Backpack,Fashion,Dell,604.5,348
+46,Lenovo Smart Watch,Beauty,Lenovo,682.71,131
+47,Dell Keyboard,Fashion,Dell,41.34,288
+48,Dell Phone,Home,Dell,20.71,367
+49,Apple Monitor,Electronics,Apple,1359.08,445
+50,Lenovo Keyboard,Beauty,Lenovo,364.63,347
+51,Adidas Monitor,Beauty,Adidas,207.14,483
+52,Philips Phone,Sports,Philips,372.07,247
+53,Nike Monitor,Electronics,Nike,154.43,225
+54,Lenovo Coffee Maker,Sports,Lenovo,705.87,378
+55,Apple Tablet,Books,Apple,1476.41,55
+56,Apple Coffee Maker,Books,Apple,515.56,446
+57,Samsung Monitor,Home,Samsung,293.41,234
+58,Sony Coffee Maker,Home,Sony,425.03,132
+59,Samsung Smart Watch,Toys,Samsung,1293.41,286
+60,Samsung Laptop,Books,Samsung,1498.93,433
+61,Apple Keyboard,Toys,Apple,1274.56,90
+62,Nike Smart Watch,Sports,Nike,328.48,210
+63,Apple Mouse,Sports,Apple,13.21,204
+64,HP Speaker,Toys,HP,1179.84,151
+65,Nike Backpack,Books,Nike,1493.18,289
+66,Adidas Mouse,Home,Adidas,452.09,500
+67,Apple Phone,Books,Apple,817.87,387
+68,Lenovo Laptop,Electronics,Lenovo,880.42,262
+69,Logitech Mouse,Electronics,Logitech,1441.56,46
+70,Sony Keyboard,Beauty,Sony,111.26,446
+71,Dell Coffee Maker,Electronics,Dell,1412.98,296
+72,Dell Phone,Beauty,Dell,69.22,46
+73,Nike Tablet,Beauty,Nike,852.19,166
+74,HP Monitor,Books,HP,1077.13,127
+75,HP Coffee Maker,Home,HP,1010.82,158
+76,Adidas Shoes,Toys,Adidas,1404.24,9
+77,Adidas Phone,Beauty,Adidas,1494.18,42
+78,Logitech Monitor,Beauty,Logitech,405.15,482
+79,Lenovo Speaker,Electronics,Lenovo,1320.11,194
+80,HP Mouse,Sports,HP,1252.28,365
+81,HP Phone,Toys,HP,984.42,9
+82,Logitech Headphones,Books,Logitech,164.34,454
+83,Sony Headphones,Electronics,Sony,1335.67,385
+84,Logitech Mouse,Fashion,Logitech,429.82,112
+85,Lenovo Monitor,Books,Lenovo,955.01,140
+86,Logitech Smart Watch,Fashion,Logitech,1358.95,438
+87,Apple Keyboard,Books,Apple,641.13,146
+88,Apple Laptop,Fashion,Apple,1158.97,331
+89,HP Mouse,Books,HP,668.33,366
+90,Nike Desk,Electronics,Nike,176.69,488
+91,Sony Desk,Electronics,Sony,1253.55,303
+92,Logitech Mouse,Sports,Logitech,199.89,162
+93,Lenovo Speaker,Toys,Lenovo,1458.57,25
+94,Lenovo Monitor,Books,Lenovo,381.8,57
+95,Lenovo Camera,Beauty,Lenovo,1327.36,213
+96,Philips Backpack,Home,Philips,1389.39,126
+97,Sony Camera,Toys,Sony,273.81,216
+98,Apple Mouse,Books,Apple,1387.49,405
+99,Nike Camera,Books,Nike,1297.46,420
+100,Dell Headphones,Home,Dell,1183.19,60
+101,Nike Book,Electronics,Nike,1289.3,118
+102,Dell Book,Sports,Dell,530.99,425
+103,Dell Monitor,Electronics,Dell,993.45,209
+104,Lenovo Headphones,Toys,Lenovo,113.44,400
+105,HP Shoes,Books,HP,769.01,352
+106,Logitech Shoes,Electronics,Logitech,181.86,138
+107,Sony Phone,Fashion,Sony,67.0,310
+108,Nike Shoes,Books,Nike,1181.78,228
+109,Philips Desk,Electronics,Philips,583.94,300
+110,Dell Headphones,Electronics,Dell,1066.09,5
+111,Logitech Speaker,Toys,Logitech,812.29,373
+112,Dell Shoes,Sports,Dell,114.26,345
+113,Lenovo Phone,Fashion,Lenovo,998.45,68
+114,HP Desk,Fashion,HP,1003.67,172
+115,Nike Backpack,Fashion,Nike,836.07,103
+116,Nike Tablet,Sports,Nike,1019.2,467
+117,Sony Phone,Beauty,Sony,458.42,285
+118,Apple Headphones,Fashion,Apple,323.17,407
+119,Philips Phone,Books,Philips,490.15,231
+120,Adidas Tablet,Home,Adidas,771.65,411
+121,Sony Tablet,Electronics,Sony,432.84,344
+122,Philips Shoes,Electronics,Philips,1229.45,389
+123,Dell Tablet,Fashion,Dell,344.71,106
+124,Sony Laptop,Electronics,Sony,374.82,248
+125,Philips Book,Toys,Philips,118.51,217
+126,Philips Monitor,Books,Philips,1047.57,258
+127,Nike Monitor,Home,Nike,987.53,7
+128,Samsung Camera,Sports,Samsung,336.07,416
+129,Logitech Smart Watch,Electronics,Logitech,840.53,474
+130,Samsung Smart Watch,Home,Samsung,1204.11,346
+131,Logitech Desk,Beauty,Logitech,482.77,391
+132,Adidas Phone,Toys,Adidas,1081.72,263
+133,Nike Book,Beauty,Nike,674.41,86
+134,Adidas Smart Watch,Fashion,Adidas,1130.15,435
+135,HP Camera,Toys,HP,786.74,325
+136,Dell Headphones,Sports,Dell,125.45,151
+137,Dell Headphones,Fashion,Dell,486.37,281
+138,Samsung Mouse,Home,Samsung,354.58,360
+139,Sony Backpack,Home,Sony,105.7,213
+140,Lenovo Desk,Sports,Lenovo,629.5,110
+141,Nike Coffee Maker,Toys,Nike,880.28,361
+142,Apple Book,Toys,Apple,867.78,249
+143,Apple Shoes,Fashion,Apple,1132.68,441
+144,Nike Desk,Books,Nike,1104.6,414
+145,Philips Speaker,Home,Philips,737.46,144
+146,Nike Smart Watch,Electronics,Nike,589.4,347
+147,Nike Backpack,Home,Nike,1262.35,475
+148,Sony Phone,Beauty,Sony,50.18,206
+149,Philips Phone,Books,Philips,50.38,334
+150,Nike Mouse,Toys,Nike,697.93,30
+151,HP Coffee Maker,Fashion,HP,325.37,172
+152,Lenovo Camera,Sports,Lenovo,424.6,492
+153,Nike Headphones,Toys,Nike,132.04,14
+154,Logitech Laptop,Fashion,Logitech,344.09,40
+155,Apple Camera,Electronics,Apple,1424.92,107
+156,Apple Phone,Home,Apple,365.43,247
+157,Samsung Phone,Home,Samsung,702.9,136
+158,Lenovo Mouse,Beauty,Lenovo,914.8,387
+159,Samsung Camera,Toys,Samsung,254.01,164
+160,Samsung Phone,Electronics,Samsung,1394.04,299
+161,Nike Coffee Maker,Books,Nike,305.51,308
+162,Dell Keyboard,Books,Dell,1161.0,440
+163,Philips Camera,Electronics,Philips,1196.38,294
+164,Apple Shoes,Beauty,Apple,648.28,194
+165,Samsung Desk,Books,Samsung,518.43,439
+166,Nike Book,Sports,Nike,167.25,496
+167,Lenovo Tablet,Toys,Lenovo,695.01,83
+168,Nike Mouse,Books,Nike,787.4,338
+169,HP Phone,Toys,HP,1380.23,401
+170,Adidas Smart Watch,Sports,Adidas,1240.34,308
+171,HP Shoes,Toys,HP,375.79,483
+172,Samsung Headphones,Sports,Samsung,373.36,242
+173,Philips Phone,Books,Philips,574.69,19
+174,Adidas Book,Fashion,Adidas,280.94,113
+175,Lenovo Camera,Fashion,Lenovo,517.1,455
+176,Philips Backpack,Fashion,Philips,838.13,269
+177,Dell Keyboard,Home,Dell,1082.91,255
+178,Logitech Camera,Home,Logitech,1039.01,335
+179,Adidas Smart Watch,Toys,Adidas,35.69,155
+180,Dell Coffee Maker,Books,Dell,372.52,344
+181,Philips Shoes,Sports,Philips,834.67,181
+182,Nike Backpack,Beauty,Nike,502.88,364
+183,Adidas Headphones,Fashion,Adidas,384.59,66
+184,Dell Shoes,Electronics,Dell,1116.89,491
+185,Sony Monitor,Home,Sony,1110.52,146
+186,Philips Camera,Beauty,Philips,899.22,56
+187,Dell Headphones,Home,Dell,547.71,159
+188,Apple Backpack,Beauty,Apple,198.61,28
+189,Apple Desk,Fashion,Apple,1049.15,69
+190,Adidas Keyboard,Toys,Adidas,28.28,150
+191,Adidas Smart Watch,Sports,Adidas,517.65,499
+192,Apple Headphones,Toys,Apple,721.82,425
+193,Samsung Coffee Maker,Sports,Samsung,120.38,327
+194,Apple Mouse,Home,Apple,1218.6,490
+195,HP Keyboard,Home,HP,186.49,396
+196,Nike Phone,Beauty,Nike,1188.2,120
+197,Logitech Coffee Maker,Sports,Logitech,1363.67,157
+198,Philips Coffee Maker,Fashion,Philips,857.26,35
+199,Philips Backpack,Electronics,Philips,1421.91,111
+200,Dell Headphones,Books,Dell,130.97,127

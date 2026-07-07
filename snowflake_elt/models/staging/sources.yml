@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    database: ELT_WAREHOUSE
+    schema: RAW
+
+    tables:
+      - name: customers
+      - name: products
+      - name: orders
+      - name: order_items
