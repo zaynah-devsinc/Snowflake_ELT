@@ -3,5 +3,13 @@ SELECT
     product_name,
     category,
     brand,
-    price
+    price,
+    stock,
+
+    CASE
+        WHEN price < 50 THEN 'Budget'
+        WHEN price < 150 THEN 'Mid Range'
+        ELSE 'Premium'
+    END AS price_segment
+
 FROM {{ ref('stg_products') }}

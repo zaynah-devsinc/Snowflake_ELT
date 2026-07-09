@@ -1,1 +1,16 @@
 -- Streams script
+USE DATABASE ELT_WAREHOUSE;
+
+CREATE SCHEMA IF NOT EXISTS STREAMS;
+
+CREATE OR REPLACE STREAM customers_stream
+ON TABLE RAW.customers;
+
+CREATE OR REPLACE STREAM products_stream
+ON TABLE RAW.products;
+
+CREATE OR REPLACE STREAM orders_stream
+ON TABLE RAW.orders;
+
+CREATE OR REPLACE STREAM order_items_stream
+ON TABLE RAW.order_items;

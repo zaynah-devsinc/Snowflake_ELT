@@ -5,5 +5,8 @@ SELECT
     email,
     city,
     country,
-    signup_date
+    signup_date,
+
+    DATEDIFF('day', signup_date, CURRENT_DATE()) AS customer_age_days
+
 FROM {{ ref('stg_customers') }}

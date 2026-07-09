@@ -14,8 +14,8 @@ USE SCHEMA RAW;
 CREATE OR REPLACE FILE FORMAT csv_format
 TYPE = CSV
 FIELD_DELIMITER = ','
-SKIP_HEADER = 1
-FIELD_OPTIONALLY_ENCLOSED_BY = '"';
+FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+PARSE_HEADER = TRUE;
 
 --------------------------------------------------
 -- Create Internal Stage

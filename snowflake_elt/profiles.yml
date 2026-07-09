@@ -1,0 +1,20 @@
+ecommerce_dbt:
+  outputs:
+    dev:
+      path: /Users/d-23-9386/Desktop/ELTWarehouse/database/ecommerce.duckdb
+      threads: 4
+      type: duckdb
+  target: dev
+snowflake_elt:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: bjgmffl-rw59312
+      user: ZAYNAHIMRAN
+      password: Zaynah4959002Zz#
+      role: ACCOUNTADMIN
+      database: ELT_WAREHOUSE
+      warehouse: ELT_WH
+      schema: RAW
+      threads: 1

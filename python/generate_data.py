@@ -1,6 +1,8 @@
 from faker import Faker
 import pandas as pd
 import random
+import calendar
+from datetime import date, datetime
 from pathlib import Path
 
 # =====================================================
@@ -19,6 +21,26 @@ NUM_ORDERS = 5000
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+START_ORDER_DATE = date(2023, 1, 1)
+END_ORDER_DATE = datetime.now().date()
+MONTH_SEASONAL_WEIGHTS = {
+    1: 0.75,
+    2: 1.00,
+    3: 1.00,
+    4: 1.00,
+    5: 1.00,
+    6: 1.00,
+    7: 1.00,
+    8: 1.00,
+    9: 1.00,
+    10: 1.10,
+    11: 1.40,
+    12: 1.60,
+}
+
+SIGNUP_START_DATE = date(2021, 1, 1)
+SIGNUP_END_DATE = date(2022, 12, 31)
+
 
 # =====================================================
 # Generate Customers
@@ -29,6 +51,10 @@ def generate_customers():
     customers = []
 
     for customer_id in range(1, NUM_CUSTOMERS + 1):
+        signup_date = fake.date_between(
+            start_date=SIGNUP_START_DATE,
+            end_date=SIGNUP_END_DATE,
+        )
 
         customers.append({
             "customer_id": customer_id,
@@ -38,13 +64,11 @@ def generate_customers():
             "phone": fake.phone_number(),
             "city": fake.city(),
             "country": fake.country(),
-            "signup_date": fake.date_between(
-                start_date="-3y",
-                end_date="today"
-            )
+            "signup_date": signup_date
         })
 
     customers_df = pd.DataFrame(customers)
+    customers_df["signup_date"] = pd.to_datetime(customers_df["signup_date"])
 
     customers_df.to_csv(
         OUTPUT_DIR / "customers.csv",
@@ -141,7 +165,61 @@ def generate_products():
 # Generate Orders
 # =====================================================
 
-def generate_orders():
+def _month_year_pairs():
+    current = START_ORDER_DATE
+    months = []
+    while current <= END_ORDER_DATE:
+        months.append((current.year, current.month))
+        if current.month == 12:
+            current = date(current.year + 1, 1, 1)
+        else:
+            current = date(current.year, current.month + 1, 1)
+    return months
+
+
+def _random_order_date():
+    months = _month_year_pairs()
+    weights = [MONTH_SEASONAL_WEIGHTS.get(month, 1.0) for _, month in months]
+    year, month = random.choices(months, weights=weights, k=1)[0]
+    max_day = calendar.monthrange(year, month)[1]
+    if year == END_ORDER_DATE.year and month == END_ORDER_DATE.month:
+        max_day = min(max_day, END_ORDER_DATE.day)
+    day = random.randint(1, max_day)
+    return date(year, month, day)
+
+
+def _month_distance(order_date: date) -> int:
+    return (order_date.year - START_ORDER_DATE.year) * 12 + (order_date.month - START_ORDER_DATE.month)
+
+
+def _order_value_multiplier(order_date: date) -> float:
+    total_months = _month_distance(END_ORDER_DATE)
+    current_month_index = _month_distance(order_date)
+    trend_factor = 0.85 + 0.3 * (current_month_index / max(total_months, 1))
+    seasonal_weight = MONTH_SEASONAL_WEIGHTS.get(order_date.month, 1.0)
+    return trend_factor * seasonal_weight
+
+
+def _random_order_date(min_date: date):
+    months = []
+    current = date(min_date.year, min_date.month, 1)
+    while current <= END_ORDER_DATE:
+        months.append((current.year, current.month))
+        if current.month == 12:
+            current = date(current.year + 1, 1, 1)
+        else:
+            current = date(current.year, current.month + 1, 1)
+
+    weights = [MONTH_SEASONAL_WEIGHTS.get(month, 1.0) for _, month in months]
+    year, month = random.choices(months, weights=weights, k=1)[0]
+    max_day = calendar.monthrange(year, month)[1]
+    if year == END_ORDER_DATE.year and month == END_ORDER_DATE.month:
+        max_day = min(max_day, END_ORDER_DATE.day)
+    day = random.randint(1, max_day)
+    return date(year, month, day)
+
+
+def generate_orders(customers_df):
 
     statuses = [
         "Pending",
@@ -160,27 +238,26 @@ def generate_orders():
     ]
 
     orders = []
+    customer_records = customers_df.to_dict("records")
 
     for order_id in range(1, NUM_ORDERS + 1):
+        customer = random.choice(customer_records)
+        signup_date = customer["signup_date"]
+        if hasattr(signup_date, 'date'):
+            signup_date = signup_date.date()
+        earliest = max(signup_date, START_ORDER_DATE)
+        order_date = _random_order_date(earliest)
 
         orders.append({
-
             "order_id": order_id,
-
-            "customer_id": random.randint(1, NUM_CUSTOMERS),
-
-            "order_date": fake.date_between(
-                start_date="-2y",
-                end_date="today"
-            ),
-
+            "customer_id": customer["customer_id"],
+            "order_date": order_date,
             "status": random.choice(statuses),
-
             "payment_method": random.choice(payment_methods)
-
         })
 
     orders_df = pd.DataFrame(orders)
+    orders_df["order_date"] = pd.to_datetime(orders_df["order_date"])
 
     orders_df.to_csv(
         OUTPUT_DIR / "orders.csv",
@@ -195,7 +272,7 @@ def generate_orders():
 # Generate Order Items
 # =====================================================
 
-def generate_order_items(products_df):
+def generate_order_items(products_df, orders_df):
 
     order_items = []
     order_item_id = 1
@@ -207,10 +284,14 @@ def generate_order_items(products_df):
         .to_dict()
     )
 
-    for order_id in range(1, NUM_ORDERS + 1):
+    order_records = orders_df.to_dict("records")
+
+    for order in order_records:
+        order_id = order["order_id"]
+        order_date = order["order_date"].date() if hasattr(order["order_date"], 'date') else order["order_date"]
 
         # Each order contains between 1 and 5 products
-        num_items = random.randint(1, 5)
+        num_items = random.choices([1, 2, 3, 4, 5], weights=[0.05, 0.15, 0.4, 0.25, 0.15], k=1)[0]
 
         selected_products = random.sample(
             range(1, NUM_PRODUCTS + 1),
@@ -225,9 +306,11 @@ def generate_order_items(products_df):
 
             discount = random.choice([0, 5, 10, 15, 20])
 
+            multiplier = _order_value_multiplier(order_date)
             line_total = round(
                 quantity *
                 unit_price *
+                multiplier *
                 (1 - discount / 100),
                 2
             )
@@ -275,9 +358,9 @@ def main():
 
     products_df = generate_products()
 
-    orders_df = generate_orders()
+    orders_df = generate_orders(customers_df)
 
-    order_items_df = generate_order_items(products_df)
+    order_items_df = generate_order_items(products_df, orders_df)
 
     print("\nDataset Summary")
     print("----------------------------")
