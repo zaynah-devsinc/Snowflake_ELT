@@ -238,11 +238,12 @@ def run_query(query: str) -> pd.DataFrame:
                 grouped.rename(columns={"country": "COUNTRY"}, inplace=True)
                 return _normalize_local_columns(grouped[["customer_id", "CUSTOMER_NAME", "COUNTRY", "AVERAGE_SPEND"]])
 
-            if "COUNT(DISTINCT f.order_id) AS order_count" in query and "SUM(f.net_sales) AS lifetime_value" in query and "AVG(f.net_sales) AS average_order_value" in query:
-                result = merged.groupby(["customer_id", "first_name", "last_name", "email", "city", "country"]).agg(ORDER_COUNT=("order_id", pd.Series.nunique), LIFETIME_VALUE=("net_sales", "sum"), AVERAGE_ORDER_VALUE=("net_sales", "mean")).reset_index()
-                result["CUSTOMER_NAME"] = result["first_name"] + " " + result["last_name"]
-                result.rename(columns={"email": "EMAIL", "city": "CITY", "country": "COUNTRY"}, inplace=True)
-                return _normalize_local_columns(result[["customer_id", "CUSTOMER_NAME", "EMAIL", "CITY", "COUNTRY", "ORDER_COUNT", "LIFETIME_VALUE", "AVERAGE_ORDER_VALUE"]])
+            if "COUNT(DISTINCT f.order_id) AS order_count" in query and "SUM(f.net_sales) AS lifetime_value" in query and "ROUND(SUM(f.net_sales) / NULLIF(COUNT(DISTINCT f.order_id), 0), 2) AS average_order_value" in query:
+                grouped = merged.groupby(["customer_id", "first_name", "last_name", "email", "city", "country"]).agg(TOTAL_REVENUE=("net_sales", "sum"), ORDER_COUNT=("order_id", pd.Series.nunique)).reset_index()
+                grouped["AVERAGE_ORDER_VALUE"] = grouped.apply(lambda row: round(row["TOTAL_REVENUE"] / row["ORDER_COUNT"], 2) if row["ORDER_COUNT"] else 0, axis=1)
+                grouped["CUSTOMER_NAME"] = grouped["first_name"] + " " + grouped["last_name"]
+                grouped.rename(columns={"email": "EMAIL", "city": "CITY", "country": "COUNTRY"}, inplace=True)
+                return _normalize_local_columns(grouped[["customer_id", "CUSTOMER_NAME", "EMAIL", "CITY", "COUNTRY", "ORDER_COUNT", "TOTAL_REVENUE", "AVERAGE_ORDER_VALUE"]].rename(columns={"TOTAL_REVENUE": "LIFETIME_VALUE"}))
 
             if "COUNT(DISTINCT c.customer_id) AS customer_count" in query and "FROM FACT_ORDERS" in query:
                 result = merged.groupby("country").agg({"customer_id": pd.Series.nunique}).reset_index().rename(columns={"country": "COUNTRY", "customer_id": "CUSTOMER_COUNT"}).sort_values("CUSTOMER_COUNT", ascending=False)

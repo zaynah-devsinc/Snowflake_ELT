@@ -46,11 +46,10 @@ def _get_connection(config: dict):
 def _load_monthly_revenue_snowflake(config: dict) -> pd.DataFrame:
     query = """
 SELECT
-    DATE_TRUNC('MONTH', order_date) AS month,
-    SUM(net_sales) AS revenue
-FROM FACT_ORDERS
-GROUP BY 1
-ORDER BY 1
+    sales_month AS month,
+    net_revenue AS revenue
+FROM SALES_SUMMARY
+ORDER BY sales_month
 """
     with _get_connection(config).cursor() as cursor:
         cursor.execute(query)

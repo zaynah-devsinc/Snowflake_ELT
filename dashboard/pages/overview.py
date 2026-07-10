@@ -232,7 +232,7 @@ def render(filters: dict) -> None:
     now_hour = datetime.now().hour
     greeting = "Good morning" if now_hour < 12 else ("Good afternoon" if now_hour < 17 else "Good evening")
 
-    st.markdown(f"### {greeting}, Overview")
+    st.markdown(f"### {greeting}")
     st.caption("Orders, revenue, and customer metrics from FACT_ORDERS.")
     page_ui.render_dashboard_guide()
 

@@ -10,7 +10,7 @@ SELECT
 
     SUM(net_sales) AS net_revenue,
 
-    AVG(net_sales) AS average_order_value
+    SUM(net_sales) / NULLIF(COUNT(DISTINCT order_id), 0) AS average_order_value
 
 FROM {{ ref('fact_orders') }}
 

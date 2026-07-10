@@ -230,7 +230,7 @@ SELECT
     c.country,
     COUNT(DISTINCT f.order_id) AS order_count,
     SUM(f.net_sales) AS lifetime_value,
-    AVG(f.net_sales) AS average_order_value
+    ROUND(SUM(f.net_sales) / NULLIF(COUNT(DISTINCT f.order_id), 0), 2) AS average_order_value
 FROM FACT_ORDERS f
 LEFT JOIN DIM_CUSTOMERS c ON f.customer_id = c.customer_id
 LEFT JOIN DIM_PRODUCTS p ON f.product_id = p.product_id
